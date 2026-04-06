@@ -1,0 +1,27 @@
+<x-guest-layout>
+    <div class="mb-4 text-sm text-gray-600">
+        {{ __('Area ini terlindungi. Konfirmasi kata sandi Anda sebelum melanjutkan.') }}
+    </div>
+
+    <form method="POST" action="{{ route('password.confirm') }}">
+        @csrf
+
+        <!-- Password -->
+        <div>
+            <x-input-label for="kata_sandi" :value="__('Kata Sandi')" />
+
+            <x-text-input id="kata_sandi" class="block mt-1 w-full"
+                            type="password"
+                            name="kata_sandi"
+                            required autocomplete="current-password" />
+
+            <x-input-error :messages="$errors->get('kata_sandi')" class="mt-2" />
+        </div>
+
+        <div class="flex justify-end mt-4">
+            <x-primary-button>
+                {{ __('Konfirmasi') }}
+            </x-primary-button>
+        </div>
+    </form>
+</x-guest-layout>
